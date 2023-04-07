@@ -1,5 +1,17 @@
+.success{
+  background-color: green;
+}
+.warning{
+  background-color: red;
+}
+
+
+
+
 .App {
   text-align: center;
+  color: rgb(58, 196, 90);
+  font-size: large;
 }
 
 .App-logo {

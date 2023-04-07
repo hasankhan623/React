@@ -3,43 +3,24 @@ import './App.css';
 
 function App() {
   const user1 = () => { return <h1> Mahdi Hasankhan</h1>}
-  
+  const age=30;
+  const users =[ 
+    {name:"mohammad", age: 42},
+    {name :"mahdi", age :33} ,
+    {name :"hasankhan", age:444}]
   return (
    
     <div>
-      <h1> test1 component</h1>
-        {user1()}
-        {job()}
-       
-
-    </div>
+      {users.map((value , index)=>{
+        return <User name={value.name} age={value.age} /> 
+      })}
+        </div>  
+    
   );
 }
 
-//const getname = () =>{ return " hasankhan"}
-//props
-const props = {
-name : 'Mohammad',
-Age : 42
-
-};
-
-//component
-const user1 = (props) => { 
-  
-  return  (
-            <div>
-            <h1> {props.Age}</h1> 
-            <h2>{props.name}</h2>
-           </div>
-          )
- };
- const job = () =>{
-  return(
-    <div>;
-        <h1> job name is " computer" </h1>
-        <h2>2</h2>
-        </div>);
-      };
-    
 export default App;
+
+const User = (props) => {
+  return (<h2>{props.name}: {props.age}</h2>);
+};
