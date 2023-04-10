@@ -37,10 +37,22 @@ setValue(event.target.value)
  }
 
 const [textMsg,setMsg]=useState("text massage")
+
+const showHied=()=>{
+  setStatus(!status)
+
+}
+
+
+const[status,setStatus]=useState(true)
+
+const [textcolor,setColorText]=useState("blue")
+
+
 return(
   <div>
-<h1 className='App'>{textMsg} </h1>
-<h1>{inputvalue}</h1>
+{status && <h1 className='App'>{textMsg} </h1>}
+<h1  style={{color : textcolor}}>{inputvalue}</h1>
 <h1>{count}</h1>
 <h1>{age}</h1>
 <h1>{salary}</h1>
@@ -55,10 +67,13 @@ return (
 <button onClick={handelClick} > Increase the number</button>
 <button onClick={handelAge}>Decrease the number</button>
 <button>Status</button>
+<br></br>
 <button onClick ={()=>setSalary(salary+500)}>Salary</button>
 <input type='text' onChange={handelinput} ></input>
+<button onClick={()=>{setColorText(textcolor==="blue" ? "pink":"blue")}}>color</button>
+<br></br>
 <input type='text' className='warning' onChange={handelWarning}></input>
-
+<button onClick={showHied}>show/hied</button>
 
 
 </div>
