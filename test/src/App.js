@@ -16,6 +16,7 @@ const [salary,setSalary] =useState(1000)
               ]
 
 
+
 const [age,setAge]=useState(0);
 const handelAge=()=>{
   setAge(age-1);
@@ -26,16 +27,19 @@ const handelClick=()=>{
 
   setCount(count+1);
 }
-
-
 const[inputvalue,setValue]=useState("Insert text")
 
 const handelinput=(event)=>{
 setValue(event.target.value)
 }
+ const handelWarning=(event)=>{
+  setMsg(event.target.value)
+ }
+
+const [textMsg,setMsg]=useState("text massage")
 return(
   <div>
-
+<h1 className='App'>{textMsg} </h1>
 <h1>{inputvalue}</h1>
 <h1>{count}</h1>
 <h1>{age}</h1>
@@ -53,6 +57,10 @@ return (
 <button>Status</button>
 <button onClick ={()=>setSalary(salary+500)}>Salary</button>
 <input type='text' onChange={handelinput} ></input>
+<input type='text' className='warning' onChange={handelWarning}></input>
+
+
+
 </div>
 )
 }
