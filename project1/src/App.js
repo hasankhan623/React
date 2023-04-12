@@ -3,55 +3,46 @@ import './App.css';
 import {useState} from "react";
 
 function App() {
+const[cours,addCours]=useState([]);
+const [classList,insclass]=useState("t");
 
- const[courseList,changeText]=useState([]);
-
-const [insertText,settext]=useState("");
-
-const settext2=(event)=>{
-  settext(event.target.value)
-
+const textChange=(event)=>{
+  insclass(event.target.value)
+}
+const addcourse=()=>{
+  const newarr=[...cours,classList]
+addCours(newarr)
 }
 
-const showText=()=>{
-  changeText(insertText)
-
-const newcourseList=[...courseList,insertText]
-changeText(newcourseList)
-
-};
-
-const deletecourse=(namecours)=>{
-const newdeletcours=courseList.filter(
-
-(courses)=>{
-
-  if (courses===namecours)return false
-  else return true
+const deletCours=(coursesName1)=>{
+  const newdeletcours=cours.filter(
+    (cours)=>{
+      if(cours===coursesName1) return false
+        else return true
+    }
+  )
+  addCours(newdeletcours)
 }
-
-)
-changeText(newdeletcours)
-};
   return (
+   <div>
+    <input type='text' onChange={textChange}></input>
+    <button onClick={addcourse}>Insert</button>
     
-  <div>
+    <h2>{cours.map((coursesName)=>{
+      return(
 
-   
-<input type="text" onChange={settext2}></input>
-<button  onClick={showText}>Insert</button>
-{courseList.map((courses)=>{
-return (
-<div>
-<h1>{courses}</h1> 
-<button onClick={()=>deletecourse(courses)}>Delete</button>
+         <div>
+             <p>
+                <h3>{coursesName}</h3>
+                <button onClick={()=>deletCours(coursesName)}>Delete</button>
+             </p>
+         </div>
+      )
+    })
+
+    }</h2>
 </div>
+
 )
-
-})}
-
-  </div>
-  );
 }
-
 export default App;
