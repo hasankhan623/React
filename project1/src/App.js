@@ -1,48 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
-import {useState} from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
-const[cours,addCours]=useState([]);
-const [classList,insclass]=useState("t");
+  const [cours, addCours] = useState([]);
+  const [classList, insclass] = useState("t");
 
-const textChange=(event)=>{
-  insclass(event.target.value)
-}
-const addcourse=()=>{
-  const newarr=[...cours,classList]
-addCours(newarr)
-}
+  const textChange = (event) => {
+    insclass(event.target.value);
+  };
+  const addcourse = () => {
+    const coursenew = {
+      id: cours.length === 0 ? 1 : cours[cours.length - 1].id + 1,
+      courceName: classList,
+    };
 
-const deletCours=(coursesName1)=>{
-  const newdeletcours=cours.filter(
-    (cours)=>{
-      if(cours===coursesName1) return false
-        else return true
-    }
-  )
-  addCours(newdeletcours)
-}
+    const newarr = [...cours, coursenew];
+    addCours(newarr);
+  };
+
+  const deletCours = (coursId) => {
+    const newdeletcours = cours.filter((cours) => {
+      if (coursId === cours.id) return false;
+      else return true;
+    });
+    addCours(newdeletcours);
+  };
   return (
-   <div>
-    <input type='text' onChange={textChange}></input>
-    <button onClick={addcourse}>Insert</button>
-    
-    <h2>{cours.map((coursesName)=>{
-      return(
+    <div>
+      <input type="text" onChange={textChange}></input>
+      <button onClick={addcourse}>Insert</button>
 
-         <div>
-             <p>
-                <h3>{coursesName}</h3>
-                <button onClick={()=>deletCours(coursesName)}>Delete</button>
-             </p>
-         </div>
-      )
-    })
-
-    }</h2>
-</div>
-
-)
+      <h2>
+        {cours.map((cours, index) => {
+          return (
+            <div>
+              <h1>const name='ee';</h1>
+              <p>
+                <h3>{cours.courceName} </h3>
+                <button onClick={() => deletCours(cours.id)}>Delete</button>
+              </p>
+            </div>
+          );
+        })}
+      </h2>
+    </div>
+  );
 }
 export default App;
